@@ -15,8 +15,7 @@
  */
 
 @import url(http://fonts.googleapis.com/css?family=Lobster);
-@import url(http://fonts.googleapis.com/css?family=Poiret+One);
-@import url(http://fonts.googleapis.com/css?family=Raleway:400,300);
+@import url(http://fonts.googleapis.com/css?family=Muli:400,300);
 
 body {
   background-image: url("golf-background.png");
@@ -26,30 +25,30 @@ body {
 }
 
 .application {
-  margin-top: 115px;
+  margin-top: 105px;
 }
 
 .navmenu,
 .container.main {
-  width: 85%;
-  margin-left: 10%;
   border: 1px solid #F4EFA3;
-  
+  margin-left: 10%;
+  width: 85%;
 }
 
 .navmenu {
   background-color: rgb(0,103,56);
-  height: 80px;
   color: #F5EF98;
   font-family: 'Lobster';
+  height: 73px;
   h1 {
-    margin: 15px;
-    margin-bottom: 5px;
-    font-size: 48px;
+    font-size: 42px;
+    margin: 15px 15px 5px 20px;
     small {
-      font-family: 'Raleway', cursive;
-      font-weight: 300;
+      font-size: 22px;
       color: inherit;
+      font-family: 'Muli', sans-serif;
+      font-weight: 300;
+      //margin-left: 3px;
     }
   }
 
