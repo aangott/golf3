@@ -1,0 +1,5 @@
+
+turn application.css into scss.css
+
+
+http://www.istockphoto.com/vector/golf-background-17724535?st=f39f0d5
