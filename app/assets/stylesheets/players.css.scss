@@ -1,13 +1,34 @@
+@import 'application'; 
+
 #players_index {
+  h1 {
+    .fa {
+      font-size: 14px;
+      padding-right: 5px;
+    }
+  }
   table {
     margin-bottom: 40px;
-  }
-  th:nth-child(1),
-  th:nth-child(2) {
-    width: 40%;
-  }
-  th:nth-child(3),
-  th:nth-child(4) {
-    width: 10%;
+    th:nth-child(1),
+    th:nth-child(2) {
+      width: 40%;
+    }
+    th:nth-child(3),
+    th:nth-child(4) {
+      width: 10%;
+    }
+    a {
+      color: $dark-green;
+      &:hover {
+        color: $bright-green;
+        text-decoration: none;
+      }
+      &.fa-times {
+        color: $nice-red;
+        &:hover {
+          color: $dark-red;
+        }
+      }
+    }
   }
 }

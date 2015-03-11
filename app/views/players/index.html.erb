@@ -1,26 +1,36 @@
 <div id='players_index'>
-  <h1 class='page-header'>Manage Players</h1>
+  <h1 class='page-header'>
+    Manage Players
+    <button class='pull-right btn btn-success'>
+      <i class="fa fa-plus-circle"></i>
+      Add player
+    </button>
+  </h1>
   <% @categorized_players.each do |category, players| %>
     <h2><%= category %></h2>
     <table class='table table-striped'>
-      <tr>
-        <th>Name</th>
-        <th>Number</th>
-        <th>Edit</th>
-        <th>Delete</th>
-      </tr>
-      <% players.each do |player| %>
+      <thead>
         <tr>
-          <td><%= player.full_name %></td>
-          <td><%= player.number %></td>
-          <td>
-            <%= link_to '#' do %>
-              <i class="fa fa-pencil"></i>
-            <% end %>
-          </td>
-          <td><%= link_to '', '#', class: 'fa fa-times' %></td>
+          <th>Name</th>
+          <th>Number</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
-      <% end %>
+      </thead>
+      <tbody>
+        <% players.each do |player| %>
+          <tr>
+            <td><%= player.full_name %></td>
+            <td><%= player.number %></td>
+            <td>
+              <%= link_to '#' do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+            </td>
+            <td><%= link_to '', '#', class: 'fa fa-times' %></td>
+          </tr>
+        <% end %>
+      </tbody>
     </table>
   <% end %>
 </div>

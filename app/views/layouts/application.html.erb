@@ -7,17 +7,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-
-<div class='application'>
-  <div class='navmenu'>
-    <h1>Mates <small>golf league</small></h1>
-  </div>
-  <div class='container main'>
-    <div class='content'>
-      <%= yield %>
+  <div class='application'>
+    <div class='navmenu'>
+      <a href='#'><h1>Mates <small>golf league</small></h1></a>
+      <div class='nav-links'>
+        <a href='#'>Schedule</a>
+        <a href='#'>Rankings</a>
+        <a href='#'>Score History</a>
+      </div>
+      <div class='admin-login'>
+        <a href='#'>Admin Login</a>
+      </div>
+    </div>
+    <div class='container main'>
+      <div class='content'>
+        <%= yield %>
+      </div>
     </div>
   </div>
-</div>
 </body>
 </html>
