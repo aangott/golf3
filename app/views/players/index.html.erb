@@ -1,10 +1,10 @@
-<div id='players_index'>
+<div id='players-index'>
   <h1 class='page-header'>
     Manage Players
-    <button class='pull-right btn btn-success'>
+    <%= link_to new_player_path, class: 'pull-right btn btn-success' do %>
       <i class="fa fa-plus-circle"></i>
       Add player
-    </button>
+    <% end %>
   </h1>
   <% @categorized_players.each do |category, players| %>
     <h2><%= category %></h2>
@@ -23,11 +23,15 @@
             <td><%= player.full_name %></td>
             <td><%= player.number %></td>
             <td>
-              <%= link_to '#' do %>
+              <%= link_to edit_player_path(player) do %>
                 <i class="fa fa-pencil"></i>
               <% end %>
             </td>
-            <td><%= link_to '', '#', class: 'fa fa-times' %></td>
+            <td>
+              <%= link_to player, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <i class="fa fa-times"></i>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

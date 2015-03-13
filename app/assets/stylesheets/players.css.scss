@@ -1,6 +1,6 @@
 @import 'application'; 
 
-#players_index {
+#players-index {
   h1 {
     .fa {
       font-size: 14px;
@@ -9,6 +9,9 @@
   }
   table {
     margin-bottom: 40px;
+    &:last-child {
+      margin-bottom: 0;
+    }
     th:nth-child(1),
     th:nth-child(2) {
       width: 40%;
@@ -30,5 +33,11 @@
         }
       }
     }
+  }
+}
+
+#players-form {
+  .radio-inline {
+    padding: 0;
   }
 }

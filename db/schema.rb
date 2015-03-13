@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309222053) do
+ActiveRecord::Schema.define(version: 20150313231929) do
 
   create_table "players", force: :cascade do |t|
     t.string   "first_name"
@@ -19,9 +19,10 @@ ActiveRecord::Schema.define(version: 20150309222053) do
     t.string   "suffix"
     t.string   "number"
     t.string   "flight"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.boolean  "active"
+    t.integer  "starting_average"
   end
 
 end

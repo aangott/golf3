@@ -1,0 +1,37 @@
+<div id='players-form'>  
+  <%= form_for(@player) do |f| %>
+    <div class='form-group'>
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :suffix %><br />
+      <%= f.text_field :suffix, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :flight %><br />
+      <%= f.select :flight, options_for_select(Player::FLIGHTS), {}, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :number %><br />
+      <%= f.text_field :number, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :starting_average %><br />
+      <%= f.text_field :starting_average, class: 'form-control' %>
+    </div>
+    <div class='form-group'>
+      <%= f.label :active, 'Active', value: true, class: 'radio-inline' %>
+      <%= f.radio_button :active, true, class: 'radio-inline' %>
+      <%= f.label :active, 'Not active', value: false, class: 'radio-inline' %>
+      <%= f.radio_button :active, false, class: 'radio-inline' %>
+    </div>
+    <div class='actions'>
+      <%= f.submit nil, {'class' => 'btn btn-success'} %>
+    </div>
+  <% end %>
+</div>
