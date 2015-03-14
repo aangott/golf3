@@ -11,7 +11,7 @@
     <div class='navmenu'>
       <a href='#'><h1>Mates <small>golf league</small></h1></a>
       <div class='nav-links'>
-        <a href='#'>Schedule</a>
+        <%= link_to 'Schedule', rounds_path %>
         <a href='#'>Rankings</a>
         <a href='#'>Score History</a>
       </div>
@@ -21,6 +21,7 @@
     </div>
     <div class='container main'>
       <div class='content'>
+        <%= flash_messages %>
         <%= yield %>
       </div>
     </div>
