@@ -1,0 +1,53 @@
+<%= form_for @round_form, url: rounds_path do |f| %>
+  <div class='form-group'>
+    <%= f.label :date %><br />
+    <%= 
+      f.date_select :date, 
+      {:order => [:month, :day, :year]}, 
+      { class: 'form-control' } 
+    %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :course %><br />
+    <%= 
+      f.select :course, 
+      options_for_select(Round::COURSES), {}, 
+      { class: 'form-control' } 
+    %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :note %><br />
+    <%= f.text_field(:note, { class: 'form-control' }) %>
+  </div>
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Player 1</th>
+        <th>Player 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Round.matches_per_round.times do |match_index| %>
+        <tr>
+          <td>        
+            <%= 
+              select_tag "matches[#{match_index}][player_1]", 
+              options_for_select(Round::COURSES), 
+              class: 'form-control' 
+            %>
+          </td>
+          <td>
+            <%= 
+              select_tag "matches[#{match_index}][player_2]", 
+              options_for_select(Round::COURSES), 
+              class: 'form-control' 
+            %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class='actions'>
+    <%= f.submit 'Create Round', {'class' => 'btn btn-success'} %>
+  </div>
+<% end %>
