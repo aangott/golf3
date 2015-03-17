@@ -36,6 +36,8 @@ class RoundsController < ApplicationController
     end
   end
 
-
+  def show
+    @round = Round.find(params[:id])
+  end
 
 end

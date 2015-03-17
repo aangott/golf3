@@ -1,0 +1,25 @@
+<div id='rounds-show'>
+  <h1 class='page-header'>
+    Round details
+  </h1>
+  <h2>
+    <%= @round.date.to_formatted_s(:long) %> 
+    <small><%= @round.course %></small>
+  </h2>
+  <table class='table table-striped'>
+    <thead>
+      <tr>
+        <th>Player 1</th>
+        <th>Player 2</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @round.matches.each do |match| %>
+        <tr>
+          <td><%= display_player(match.player1)%></td>
+          <td><%= display_player(match.player2)%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
