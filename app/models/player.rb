@@ -9,4 +9,8 @@ class Player < ActiveRecord::Base
     [first_name, last_name, suffix].join(' ')
   end
 
+  def num_full_name
+    "#{number} - #{full_name}"
+  end
+
 end

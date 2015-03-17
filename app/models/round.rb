@@ -1,5 +1,7 @@
 class Round < ActiveRecord::Base
 
+  has_many :matches
+
   COURSES = ['Front 9', 'Back 9', 'No Golf']
 
   def self.this_year

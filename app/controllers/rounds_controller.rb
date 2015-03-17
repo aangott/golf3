@@ -10,7 +10,7 @@ class RoundsController < ApplicationController
 
   def create
     @round_form = RoundForm.new(Round.new)
-    if @round_form.submit(params)
+    if @round_form.submit(params[:round_form])
       flash[:success] = 'Round successfully added.'
       redirect_to rounds_path
     else

@@ -27,20 +27,16 @@
       </tr>
     </thead>
     <tbody>
-      <% Round.matches_per_round.times do |match_index| %>
+      <%= f.fields_for :matches do |m| %>
         <tr>
           <td>        
-            <%= 
-              select_tag "matches[#{match_index}][player_1]", 
-              options_for_select(Round::COURSES), 
-              class: 'form-control' 
+            <%= m.collection_select(:player1_id, Player.all, :id, :num_full_name,
+              { include_blank: true }, class: 'form-control')
             %>
           </td>
           <td>
-            <%= 
-              select_tag "matches[#{match_index}][player_2]", 
-              options_for_select(Round::COURSES), 
-              class: 'form-control' 
+            <%= m.collection_select(:player2_id, Player.all, :id, :num_full_name,
+              { include_blank: true }, class: 'form-control')
             %>
           </td>
         </tr>
