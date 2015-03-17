@@ -5,7 +5,13 @@ class RoundForm
 
   delegate :date, :course, :note, to: :round
 
-  def initialize(round)
+  def self.model_name
+    ActiveModel::Name.new(self, nil, "Round")
+  end
+
+  def initialize(round, persisted)
+    # rails uses persisted? to decide whether to show the new or edit form.
+    @persisted = persisted
     @round = round
     if round.persisted?
       @matches = round.matches
@@ -16,6 +22,7 @@ class RoundForm
   end
 
   def submit(params)
+    return true if params.blank?
     @round.update_attributes(
       date: parse_date(params),
       course: params[:course],
@@ -40,6 +47,10 @@ class RoundForm
       hash["date(2i)"].to_i, 
       hash["date(3i)"].to_i
     )
+  end
+
+  def persisted?
+    @persisted
   end
 
 end

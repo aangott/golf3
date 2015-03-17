@@ -1,4 +1,4 @@
-<%= form_for @round_form, url: rounds_path do |f| %>
+<%= form_for @round_form, url: @form_url do |f| %>
   <div class='form-group'>
     <%= f.label :date %><br />
     <%= 
@@ -44,6 +44,6 @@
     </tbody>
   </table>
   <div class='actions'>
-    <%= f.submit 'Create Round', {'class' => 'btn btn-success'} %>
+    <%= f.submit nil, {'class' => 'btn btn-success'} %>
   </div>
 <% end %>
