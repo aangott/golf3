@@ -12,4 +12,8 @@ class Round < ActiveRecord::Base
     (Player.core.count/2.0).round
   end
 
+  def in_past?
+    date < Time.now
+  end
+
 end

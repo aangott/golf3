@@ -19,6 +19,13 @@ class RoundForm
       @matches = []
       Round.matches_per_round.times { @matches << round.matches.build }
     end
+
+    if @round.in_past?
+      @matches.each do |match|
+        match.scores.build(player: match.player1) unless match.score_for(match.player1)
+        match.scores.build(player: match.player2) unless match.score_for(match.player2)
+      end
+    end
   end
 
   def submit(params)

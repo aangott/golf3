@@ -19,30 +19,13 @@
     <%= f.label :note %><br />
     <%= f.text_field(:note, { class: 'form-control' }) %>
   </div>
-  <table class='table table-striped'>
-    <thead>
-      <tr>
-        <th>Player 1</th>
-        <th>Player 2</th>
-      </tr>
-    </thead>
-    <tbody>
-      <%= f.fields_for :matches do |m| %>
-        <tr>
-          <td>        
-            <%= m.collection_select(:player1_id, Player.all, :id, :num_full_name,
-              { include_blank: true }, class: 'form-control')
-            %>
-          </td>
-          <td>
-            <%= m.collection_select(:player2_id, Player.all, :id, :num_full_name,
-              { include_blank: true }, class: 'form-control')
-            %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  
+  <% if @round.in_past? %>
+    <%= render 'rounds/past_table', f: f %>
+  <% else %>
+    <%= render 'rounds/future_table', f: f %>
+  <% end %>
+
   <div class='actions'>
     <%= f.submit nil, {'class' => 'btn btn-success'} %>
   </div>

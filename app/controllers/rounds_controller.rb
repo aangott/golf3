@@ -20,9 +20,9 @@ class RoundsController < ApplicationController
   end
 
   def edit
-    round = Round.find(params[:id])
-    @round_form = RoundForm.new(round, true)
-    @form_url = round_path(round)
+    @round = Round.find(params[:id])
+    @round_form = RoundForm.new(@round, true)
+    @form_url = round_path(@round)
   end
 
   def update
