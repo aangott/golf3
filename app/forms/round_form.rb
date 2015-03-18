@@ -21,31 +21,42 @@ class RoundForm
     end
 
     if @round.in_past?
-      @matches.each do |match|
-        match.scores.build(player: match.player1) unless match.score_for(match.player1)
-        match.scores.build(player: match.player2) unless match.score_for(match.player2)
-      end
+      @matches.each { |m| m.ensure_scores_exist }
     end
   end
 
-  def submit(params)
-    return true if params.blank?
+  def submit(round_params, match_params)
+    return true if round_params.blank?
     @round.update_attributes(
-      date: parse_date(params),
-      course: params[:course],
-      note: params[:note]
+      date: parse_date(round_params),
+      course: round_params[:course],
+      note: round_params[:note]
     )
-    params[:matches_attributes].each do |idx, attribs|
-      @matches[idx.to_i].update_attributes(
+    match_params.each do |idx, attribs|
+      match = @matches[idx.to_i]
+      match.update_attributes(
         player1_id: attribs[:player1_id],
         player2_id: attribs[:player2_id]
       )
+      assign_scores(match, attribs) if @round.in_past?
     end
   end
 
-  def matches_attributes=(attributes)
-    # this is needed for rendering fields_for :matches, but doesn't seem to
-    # be called since the RoundForm object doesn't get saved.
+  def assign_scores(match, attribs)
+    score1 = match.score_for(match.player1)
+    if score1
+      score1.update_attributes(
+        value: attribs[:player1_score],
+        adj_value: attribs[:player1_adj_score],
+      )
+    end
+    score2 = match.score_for(match.player2)
+    if score2
+      score2.update_attributes(
+        value: attribs[:player2_score],
+        adj_value: attribs[:player2_adj_score],
+      )
+    end
   end
 
   def parse_date(hash)

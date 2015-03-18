@@ -6,17 +6,19 @@
     </tr>
   </thead>
   <tbody>
-    <%= f.fields_for :matches do |m| %>
+    <% @round_form.matches.each_with_index do |match, idx| %>
       <tr>
         <td>        
-          <%= m.collection_select(:player1_id, Player.all, :id, :num_full_name,
-            { include_blank: true }, class: 'form-control')
-          %>
+          <%= select_tag("matches[#{idx}][player1_id]",
+              options_from_collection_for_select(Player.all, :id, :num_full_name, match.player1_id), 
+              class: 'form-control', include_blank: true
+          ) %>
         </td>
         <td>
-          <%= m.collection_select(:player2_id, Player.all, :id, :num_full_name,
-            { include_blank: true }, class: 'form-control')
-          %>
+          <%= select_tag("matches[#{idx}][player2_id]",
+              options_from_collection_for_select(Player.all, :id, :num_full_name, match.player2_id),
+              class: 'form-control', include_blank: true
+          ) %>
         </td>
       </tr>
     <% end %>

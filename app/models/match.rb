@@ -8,4 +8,9 @@ class Match < ActiveRecord::Base
     scores.detect { |s| s.player == player }
   end
 
+  def ensure_scores_exist
+    scores.build(player: player1) unless score_for(player1)
+    scores.build(player: player2) unless score_for(player2)
+  end
+
 end

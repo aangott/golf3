@@ -5,13 +5,15 @@ class RoundsController < ApplicationController
   end
 
   def new
-    @round_form = RoundForm.new(Round.new, false)
+    @round = Round.new
+    @round_form = RoundForm.new(@round, false)
     @form_url = rounds_path
   end
 
   def create
-    @round_form = RoundForm.new(Round.new, false)
-    if @round_form.submit(params[:round])
+    @round = Round.new
+    @round_form = RoundForm.new(@round, false)
+    if @round_form.submit(params[:round], params[:matches])
       flash[:success] = 'Round successfully added.'
       redirect_to rounds_path
     else
@@ -28,7 +30,7 @@ class RoundsController < ApplicationController
   def update
     round = Round.find(params[:id])
     @round_form = RoundForm.new(round, true)
-    if @round_form.submit(params[:round])
+    if @round_form.submit(params[:round], params[:matches])
       flash[:success] = 'Round successfully updated.'
       redirect_to rounds_path
     else

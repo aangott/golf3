@@ -13,7 +13,7 @@ class Round < ActiveRecord::Base
   end
 
   def in_past?
-    date < Time.now
+    persisted? && date < Date.today
   end
 
 end
