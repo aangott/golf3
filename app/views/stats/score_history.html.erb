@@ -1,0 +1,32 @@
+<div id='stats-score-history'>
+  <h1 class='page-header'>Score History</h1>
+  <% @categorized_players.each do |category, players| %>
+    <h2><%= category %></h2>
+    <table class='table table-striped'>
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>#</th>
+          <th>Avg</th>
+          <% (1..9).each do |i| %>
+            <th><%= i %></th>
+          <% end %>
+          <th>To Drop</th>
+          <th>Dropped</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% players.each do |player| %>
+          <tr>
+            <td><%= player.short_name %></td>
+            <td><%= player.number %></td>
+            <td><%= player.average_score %></td>
+            <% 11.times do |i| %>
+              <td><%= player.last_scores[i] %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

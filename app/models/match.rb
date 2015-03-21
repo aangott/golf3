@@ -5,6 +5,8 @@ class Match < ActiveRecord::Base
   has_many :scores
   has_many :points
 
+  delegate :date, to: :round
+
   def score_for(player)
     scores.detect { |s| s.player == player }
   end

@@ -24,11 +24,11 @@ class PlayersController < ApplicationController
   end
 
   def edit
-    @player = Player.find(params[:id])
+    @player = Player.unscoped.find(params[:id])
   end
 
   def update
-    @player = Player.find(params[:id])
+    @player = Player.unscoped.find(params[:id])
     if @player.update_attributes(player_params)
       flash[:success] = 'Player information successfully updated.'
       redirect_to players_path
@@ -38,7 +38,7 @@ class PlayersController < ApplicationController
   end
 
   def destroy
-    @player = Player.find(params[:id])
+    @player = Player.unscoped.find(params[:id])
     @player.destroy
     flash[:success] = 'Player successfully deleted.'
     redirect_to players_path
