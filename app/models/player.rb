@@ -1,4 +1,6 @@
 class Player < ActiveRecord::Base
+  has_many :scores
+  has_many :points
 
   default_scope { where(active: true) }
   scope :core, -> { where("flight IN ('First', 'Second')") }

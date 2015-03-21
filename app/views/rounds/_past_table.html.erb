@@ -22,15 +22,19 @@
         </td>
         <td>
           <%= text_field_tag("matches[#{idx}][player1_score]",
-            match.score_for(match.player1).value, class: 'form-control'
+            match.score_for(match.player1).try(:value), class: 'form-control'
           ) %>
         </td>
         <td>
           <%= text_field_tag("matches[#{idx}][player1_adj_score]",
-            match.score_for(match.player1).adj_value, class: 'form-control'
+            match.score_for(match.player1).try(:adj_value), class: 'form-control'
           ) %>
         </td>
-        <td>Points</td>
+        <td>
+          <%= text_field_tag("matches[#{idx}][player1_points]",
+            match.points_for(match.player1).try(:value), class: 'form-control'
+          ) %>
+        </td>
         <td>
           <%= select_tag("matches[#{idx}][player2_id]",
               options_from_collection_for_select(Player.all, :id, :num_full_name, match.player2_id),
@@ -39,15 +43,19 @@
         </td>
         <td>
           <%= text_field_tag("matches[#{idx}][player2_score]",
-            match.score_for(match.player2).value, class: 'form-control'
+            match.score_for(match.player2).try(:value), class: 'form-control'
           ) %>
         </td>
         <td>
           <%= text_field_tag("matches[#{idx}][player2_adj_score]",
-            match.score_for(match.player2).adj_value, class: 'form-control'
+            match.score_for(match.player2).try(:adj_value), class: 'form-control'
           ) %>
         </td>
-        <td>Points</td>
+        <td>
+          <%= text_field_tag("matches[#{idx}][player2_points]",
+            match.points_for(match.player2).try(:value), class: 'form-control'
+          ) %>
+        </td>
       </tr>
     <% end %>
   </tbody>
