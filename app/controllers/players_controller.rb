@@ -2,10 +2,10 @@ class PlayersController < ApplicationController
 
   def index
     @categorized_players = {
-      'First Flight' =>  Player.where(flight: 'First'),
-      'Second Flight' => Player.where(flight: 'Second'),
-      'Substitutes' => Player.where(flight: 'Substitute'),
-      'Inactive' => Player.unscoped.where(active: false)
+      'First Flight' =>  Player.where(flight: 'First').sort_by { |p| p.number.to_i },
+      'Second Flight' => Player.where(flight: 'Second').sort_by(&:number),
+      'Substitutes' => Player.where(flight: 'Substitute').sort_by(&:last_name),
+      'Inactive' => Player.unscoped.where(active: false).sort_by(&:last_name)
     }
   end
 

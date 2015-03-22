@@ -44,7 +44,22 @@ class Player < ActiveRecord::Base
     if scores_to_avg.empty?
       return 0
     end
-  (scores_to_avg.reduce(:+).to_f / scores_to_avg.length).round(0)
+    (scores_to_avg.reduce(:+).to_f / scores_to_avg.length).round(0)
+  end
+
+  def total_points
+    return 'n/a' if flight == 'Substitute'
+    season_points = points.select { |p| p.this_year? }.map(&:value).compact
+    season_points.reduce(0, :+)
+  end
+
+  def last_score(last_scored_round)
+    scores.detect { |s| s.round == last_scored_round }
+  end
+
+  def last_points_value(last_scored_round)
+    return 'n/a' if flight == 'Substitute'
+    points.detect { |p| p.round == last_scored_round }.try(:value)
   end
 
 end

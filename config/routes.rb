@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :players
   resources :rounds
   get "stats/score_history"
+  get "stats/rankings"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,0 +1,30 @@
+<div id='stats-rankings'>
+  <h1 class='page-header'>Rankings</h1>
+  <% @categorized_players.each do |category, players| %>
+    <h2><%= category %></h2>
+    <table class='table table-striped'>
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th>#</th>
+          <th>Mates Avg</th>
+          <th>Last Round's Score</th>
+          <th>Last Round's Points</th>
+          <th>Current Total Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% players.each do |player| %>
+          <tr>
+            <td><%= player.short_name %></td>
+            <td><%= player.number %></td>
+            <td><%= player.average_score %></td>
+            <td><%= display_score(player.last_score(@last_scored_round)) %></td>
+            <td><%= player.last_points_value(@last_scored_round) %></td>
+            <td><%= player.total_points %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>
