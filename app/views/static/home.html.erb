@@ -1,1 +1,31 @@
-homepage!
+<div id='static-home'>
+  <div class='link-wrapper'>
+    <%= link_to rounds_path do %>
+      <i class="fa fa-calendar"></i>
+      <%= Time.now.year %> season schedule
+    <% end %>
+  </div>
+
+  <div class='link-wrapper'>
+    <%= link_to stats_rankings_path do %>
+      <i class="fa fa-trophy"></i>
+      Current rankings by flight
+    <% end %>
+  </div>
+
+  <div class='link-wrapper'>
+    <%= link_to stats_score_history_path do %>
+      <i class="fa fa-list-ul"></i>
+      Score history by player
+    <% end %>
+  </div>
+
+  <% if logged_in? %>
+    <div class='link-wrapper'>
+      <%= link_to players_path do %>
+        <i class="fa fa-users"></i>
+        Manage players
+      <% end %>
+    </div>
+  <% end %>
+</div>

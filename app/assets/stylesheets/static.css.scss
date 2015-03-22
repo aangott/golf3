@@ -1,0 +1,28 @@
+@import 'application'; 
+
+#static-home {
+  text-align: center;
+  .link-wrapper {
+    width: 46%;
+    display: inline-block;
+    margin: 20px 1%;
+  }
+  a {
+    font-family: 'Muli', sans-serif;
+    margin-left: -30px;
+    color: black;
+    font-size: 24px;
+    padding: 10px;
+    border-bottom: 3px solid white;
+    .fa {
+      color: $dark-green;
+      margin-right: 10px;
+    }
+    &:hover {
+      border-color: $dark-green;
+      .fa {
+        color: $dark-green;
+      }
+    }
+  }
+}
