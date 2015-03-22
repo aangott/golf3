@@ -1,10 +1,10 @@
-<%= form_for @round_form, url: @form_url do |f| %>
+<%= form_for @round_form, url: @form_url, html: { class: 'rounds-form' } do |f| %>
   <div class='form-group'>
     <%= f.label :date %><br />
     <%= 
       f.date_select :date, 
       {:order => [:month, :day, :year]}, 
-      { class: 'form-control' } 
+      { class: 'form-control auto-width' } 
     %>
   </div>
   <div class='form-group'>
@@ -12,7 +12,7 @@
     <%= 
       f.select :course, 
       options_for_select(Round::COURSES), {}, 
-      { class: 'form-control' } 
+      { class: 'form-control auto-width' } 
     %>
   </div>
   <div class='form-group'>
@@ -21,9 +21,9 @@
   </div>
   
   <% if @round.in_past? %>
-    <%= render 'rounds/past_table', f: f %>
+    <%= render 'rounds/past_form_table', f: f %>
   <% else %>
-    <%= render 'rounds/future_table', f: f %>
+    <%= render 'rounds/future_form_table', f: f %>
   <% end %>
 
   <div class='actions'>

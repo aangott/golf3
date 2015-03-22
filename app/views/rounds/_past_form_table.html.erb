@@ -3,11 +3,11 @@
     <tr>
       <th>Player 1</th>
       <th>Score</th>
-      <th>Adjusted<br/>Score</th>
+      <th>Adj<br/>Score</th>
       <th>Points</th>
       <th>Player 2</th>
       <th>Score</th>
-      <th>Adjusted<br/>Score</th>
+      <th>Adj<br/>Score</th>
       <th>Points</th>
     </tr>
   </thead>
@@ -20,17 +20,17 @@
               class: 'form-control', include_blank: true
           ) %>
         </td>
-        <td>
+        <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player1_score]",
             match.score_for(match.player1).try(:value), class: 'form-control'
           ) %>
         </td>
-        <td>
+        <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player1_adj_score]",
             match.score_for(match.player1).try(:adj_value), class: 'form-control'
           ) %>
         </td>
-        <td>
+        <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player1_points]",
             match.points_for(match.player1).try(:value), class: 'form-control'
           ) %>
@@ -41,17 +41,17 @@
               class: 'form-control', include_blank: true
           ) %>
         </td>
-        <td>
+        <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player2_score]",
             match.score_for(match.player2).try(:value), class: 'form-control'
           ) %>
         </td>
-        <td>
+        <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player2_adj_score]",
             match.score_for(match.player2).try(:adj_value), class: 'form-control'
           ) %>
         </td>
-        <td>
+        <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player2_points]",
             match.points_for(match.player2).try(:value), class: 'form-control'
           ) %>

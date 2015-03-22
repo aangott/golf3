@@ -11,6 +11,7 @@
       <tr>
         <th>Date</th>
         <th>Course</th>
+        <th>Note</th>
         <% if logged_in? %>
           <th>Edit</th>
           <th>Delete</th>
@@ -20,8 +21,9 @@
     <tbody>
       <% @rounds.each do |round| %>
         <tr>
-          <td><%= round.date %></td>
+          <td><%= link_to round.date.strftime('%B %d, %Y'), round, class: 'round-link' %></td>
           <td><%= round.course %></td>
+          <td><%= round.note %></td>
           <% if logged_in? %>
             <td>
               <%= link_to edit_round_path(round) do %>

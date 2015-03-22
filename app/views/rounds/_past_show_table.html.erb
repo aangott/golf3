@@ -1,0 +1,28 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Player 1</th>
+      <th>Score</th>
+      <th>Adj<br/>Score</th>
+      <th>Points</th>
+      <th>Player 2</th>
+      <th>Score</th>
+      <th>Adj<br/>Score</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @round.matches.each do |match| %>
+      <tr>
+        <td><%= display_player(match.player1)%></td>
+        <td><%= match.score_for(match.player1).value %></td>
+        <td><%= match.score_for(match.player1).adj_value %></td>
+        <td><%= match.points_for(match.player1).value %></td>
+        <td><%= display_player(match.player2)%></td>
+        <td><%= match.score_for(match.player2).value %></td>
+        <td><%= match.score_for(match.player2).adj_value %></td>
+        <td><%= match.points_for(match.player2).value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

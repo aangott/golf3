@@ -1,0 +1,76 @@
+@import 'application'; 
+
+#rounds-index {
+  h1 {
+    .fa {
+      font-size: 14px;
+      padding-right: 5px;
+    }
+  }
+  table {
+    th,
+    td {
+      padding: 10px;
+      vertical-align: middle;
+    }
+    th:nth-child(4),
+    th:nth-child(5),
+    td:nth-child(4),
+    td:nth-child(5) {
+      width: 30px;
+      text-align: center;
+    }
+    td:nth-child(1) {
+      white-space: nowrap;
+    }
+    a {
+      color: $dark-green;
+      font-weight: bold;
+      &.round-link {
+        &:hover {
+          border-bottom: 2px solid $dark-green;
+          color: $dark-green;
+        }
+      }
+      &:hover {
+        color: $bright-green;
+        text-decoration: none;
+      }
+      .fa-times {
+        color: $nice-red;
+        &:hover {
+          color: $dark-red;
+        }
+      }
+    }
+  }
+}
+.rounds-form {
+  .auto-width {
+    width: auto;
+    display: inline-block;
+  }
+  .num-input {
+    max-width: 50px;
+    input {
+      padding: 6px;
+    }
+  }
+}
+#rounds-show {
+  h1.page-header {
+    margin-bottom: 20px;
+    small {
+      margin-left: 10px;
+    }
+  }
+  .note {
+    margin-bottom: 30px;
+    .note-header {
+      color: $dark-green;
+      font-weight: bold;
+      font-size: 16px;
+      margin-right: 5px;
+    }
+  }
+}

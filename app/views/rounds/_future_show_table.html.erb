@@ -1,0 +1,16 @@
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Player 1</th>
+      <th>Player 2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @round.matches.each do |match| %>
+      <tr>
+        <td><%= display_player(match.player1)%></td>
+        <td><%= display_player(match.player2)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,25 +1,13 @@
 <div id='rounds-show'>
   <h1 class='page-header'>
-    Round details
+    <%= @round.date.to_formatted_s(:long) %> <small><%= @round.course %></small>
   </h1>
-  <h2>
-    <%= @round.date.to_formatted_s(:long) %> 
-    <small><%= @round.course %></small>
-  </h2>
-  <table class='table table-striped'>
-    <thead>
-      <tr>
-        <th>Player 1</th>
-        <th>Player 2</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @round.matches.each do |match| %>
-        <tr>
-          <td><%= display_player(match.player1)%></td>
-          <td><%= display_player(match.player2)%></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+  <p class='note'><span class='note-header'>Note:</span> <%= @round.note %></p>
+
+  <% if @round.in_past? %>
+    <%= render 'rounds/past_show_table' %>
+  <% else %>
+    <%= render 'rounds/future_show_table' %>
+  <% end %>
+
 </div>
