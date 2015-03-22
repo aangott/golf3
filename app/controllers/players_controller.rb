@@ -1,4 +1,5 @@
 class PlayersController < ApplicationController
+  before_filter :authenticate
 
   def index
     @categorized_players = {

@@ -11,8 +11,10 @@
       <tr>
         <th>Date</th>
         <th>Course</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <% if logged_in? %>
+          <th>Edit</th>
+          <th>Delete</th>
+        <% end %>
       </tr>
     </thead>
     <tbody>
@@ -20,16 +22,18 @@
         <tr>
           <td><%= round.date %></td>
           <td><%= round.course %></td>
-          <td>
-            <%= link_to edit_round_path(round) do %>
-              <i class="fa fa-pencil"></i>
-            <% end %>
-          </td>
-          <td>
-            <%= link_to '#', data: { confirm: 'Are you sure?' } do %>
-              <i class="fa fa-times"></i>
-            <% end %>
-          </td>
+          <% if logged_in? %>
+            <td>
+              <%= link_to edit_round_path(round) do %>
+                <i class="fa fa-pencil"></i>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to '#', data: { confirm: 'Are you sure you want to permanently delete this round?' } do %>
+                <i class="fa fa-times"></i>
+              <% end %>
+            </td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

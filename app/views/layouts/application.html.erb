@@ -9,14 +9,20 @@
 <body>
   <div class='application'>
     <div class='navmenu'>
-      <a href='#'><h1>Mates <small>golf league</small></h1></a>
+      <%= link_to root_path do %>
+        <h1>Mates <small>golf league</small></h1>
+      <% end %>
       <div class='nav-links'>
         <%= link_to 'Schedule', rounds_path %>
         <%= link_to 'Rankings', stats_rankings_path %>
         <%= link_to 'Score History', stats_score_history_path %>
       </div>
       <div class='admin-login'>
-        <a href='#'>Admin Login</a>
+        <% if logged_in? %>
+          <%= link_to 'Log out', logout_path %>
+        <% else %>
+          <%= link_to 'Admin Login', login_path %>
+        <% end %>
       </div>
     </div>
     <div class='container main'>

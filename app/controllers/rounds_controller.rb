@@ -1,5 +1,6 @@
 class RoundsController < ApplicationController
-
+  before_filter :authenticate, :except => [:index, :show]
+  
   def index
     @rounds = Round.this_year
   end

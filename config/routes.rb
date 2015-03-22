@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
   resources :players
   resources :rounds
+  resources :sessions, only: [:new, :create, :destroy]
+
   get "stats/score_history"
   get "stats/rankings"
+
+  get '/login' =>  "sessions#new", :as => 'login'
+  get '/logout' =>  "sessions#destroy", :as => 'logout'
+
+  root 'static#home'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
