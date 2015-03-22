@@ -1,0 +1,21 @@
+@import 'application'; 
+
+#sessions-new {
+  form {
+    width: 300px;
+    margin-right: auto;
+    margin-left: auto;
+    h1.page-header {
+      margin-bottom: 20px;
+    }
+    input {
+      margin: 5px 0;
+      &.btn.btn-primary {
+        color: $light-yellow;
+        background-color: $dark-green;
+        border: none;
+        margin-top: 10px;
+      }
+    }
+  }
+}
