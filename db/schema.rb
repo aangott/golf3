@@ -11,12 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150322194102) do
+ActiveRecord::Schema.define(version: 20150325222703) do
 
   create_table "matches", force: :cascade do |t|
     t.integer "round_id"
     t.integer "player1_id"
     t.integer "player2_id"
+    t.integer "sub1_id"
+    t.integer "sub2_id"
   end
 
   add_index "matches", ["player1_id"], name: "index_matches_on_player1_id"

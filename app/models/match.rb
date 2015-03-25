@@ -1,7 +1,10 @@
 class Match < ActiveRecord::Base
   belongs_to :player1, class_name: "Player"
   belongs_to :player2, class_name: "Player"
+  belongs_to :sub1, class_name: "Player"
+  belongs_to :sub2, class_name: "Player"
   belongs_to :round
+
   has_many :scores
   has_many :points
 

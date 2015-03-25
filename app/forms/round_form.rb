@@ -39,7 +39,9 @@ class RoundForm
       match = @matches[idx.to_i]
       match.update_attributes(
         player1_id: attribs[:player1_id],
-        player2_id: attribs[:player2_id]
+        player2_id: attribs[:player2_id],
+        sub1_id: attribs[:sub1_id],
+        sub2_id: attribs[:sub2_id]
       )
       assign_outcomes(match, attribs) if @round.in_past?
     end
@@ -47,11 +49,19 @@ class RoundForm
 
   def assign_outcomes(match, attribs)
     score1 = match.scores.first
-    score1.update_attributes(
-      player_id: match.player1_id,
-      value: attribs[:player1_score],
-      adj_value: attribs[:player1_adj_score],
-    )
+    if attribs[:player1_sub_used]
+      score1.update_attributes(
+        player_id: match.sub1_id,
+        value: attribs[:sub1_score],
+        adj_value: attribs[:sub1_adj_score],
+      )
+    else
+      score1.update_attributes(
+        player_id: match.player1_id,
+        value: attribs[:player1_score],
+        adj_value: attribs[:player1_adj_score],
+      )
+    end
     point1 = match.points.first
     point1.update_attributes(
       player_id: match.player1_id,
@@ -59,11 +69,19 @@ class RoundForm
     )
 
     score2 = match.scores.last
-    score2.update_attributes(
-      player_id: match.player2_id,
-      value: attribs[:player2_score],
-      adj_value: attribs[:player2_adj_score],
-    )
+    if attribs[:player2_sub_used]
+      score2.update_attributes(
+        player_id: match.sub2_id,
+        value: attribs[:sub2_score],
+        adj_value: attribs[:sub2_adj_score],
+      )
+    else
+      score2.update_attributes(
+        player_id: match.player2_id,
+        value: attribs[:player2_score],
+        adj_value: attribs[:player2_adj_score],
+      )
+    end
     point2 = match.points.last
     point2.update_attributes(
       player_id: match.player2_id,

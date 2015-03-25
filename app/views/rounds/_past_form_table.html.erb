@@ -5,10 +5,12 @@
       <th>Score</th>
       <th>Adj<br/>Score</th>
       <th>Points</th>
+      <th>Sub?</th>
       <th>Player 2</th>
       <th>Score</th>
       <th>Adj<br/>Score</th>
       <th>Points</th>
+      <th>Sub?</th>
     </tr>
   </thead>
   <tbody>
@@ -19,15 +21,25 @@
               options_from_collection_for_select(Player.all, :id, :num_full_name, match.player1_id), 
               class: 'form-control', include_blank: true
           ) %>
+          <%= select_tag("matches[#{idx}][sub1_id]",
+              options_from_collection_for_select(Player.where(flight: 'Substitute'), :id, :num_full_name, match.sub1_id), 
+              class: 'form-control', include_blank: 'Choose substitute'
+          ) %>
         </td>
         <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player1_score]",
             match.score_for(match.player1).try(:value), class: 'form-control'
           ) %>
+          <%= text_field_tag("matches[#{idx}][sub1_score]",
+            match.score_for(match.sub1).try(:value), class: 'form-control'
+          ) %>
         </td>
         <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player1_adj_score]",
             match.score_for(match.player1).try(:adj_value), class: 'form-control'
+          ) %>
+          <%= text_field_tag("matches[#{idx}][sub1_adj_score]",
+            match.score_for(match.sub1).try(:adj_value), class: 'form-control'
           ) %>
         </td>
         <td class='num-input'>
@@ -36,25 +48,41 @@
           ) %>
         </td>
         <td>
+          <%= check_box_tag("matches[#{idx}][player1_sub_used]", '1', false, class: 'sub-used') %>
+        </td>
+        <td>
           <%= select_tag("matches[#{idx}][player2_id]",
               options_from_collection_for_select(Player.all, :id, :num_full_name, match.player2_id),
               class: 'form-control', include_blank: true
+          ) %>
+          <%= select_tag("matches[#{idx}][sub2_id]",
+              options_from_collection_for_select(Player.where(flight: 'Substitute'), :id, :num_full_name, match.sub2_id), 
+              class: 'form-control', include_blank: 'Choose substitute'
           ) %>
         </td>
         <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player2_score]",
             match.score_for(match.player2).try(:value), class: 'form-control'
           ) %>
+          <%= text_field_tag("matches[#{idx}][sub2_score]",
+            match.score_for(match.sub2).try(:value), class: 'form-control'
+          ) %>
         </td>
         <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player2_adj_score]",
             match.score_for(match.player2).try(:adj_value), class: 'form-control'
+          ) %>
+          <%= text_field_tag("matches[#{idx}][sub2_adj_score]",
+            match.score_for(match.sub2).try(:adj_value), class: 'form-control'
           ) %>
         </td>
         <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player2_points]",
             match.points_for(match.player2).try(:value), class: 'form-control'
           ) %>
+        </td>
+        <td>
+          <%= check_box_tag("matches[#{idx}][player2_sub_used]", '1', false, class: 'sub-used') %>
         </td>
       </tr>
     <% end %>
