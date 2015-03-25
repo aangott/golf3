@@ -23,23 +23,23 @@
           ) %>
           <%= select_tag("matches[#{idx}][sub1_id]",
               options_from_collection_for_select(Player.where(flight: 'Substitute'), :id, :num_full_name, match.sub1_id), 
-              class: 'form-control', include_blank: 'Choose substitute'
+              class: "form-control hidden match_#{idx}_1_sub", include_blank: 'Choose substitute'
           ) %>
         </td>
         <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player1_score]",
-            match.score_for(match.player1).try(:value), class: 'form-control'
+            match.score_for(match.player1).try(:value), class: "form-control match_#{idx}_1_player"
           ) %>
           <%= text_field_tag("matches[#{idx}][sub1_score]",
-            match.score_for(match.sub1).try(:value), class: 'form-control'
+            match.score_for(match.sub1).try(:value), class: "form-control match_#{idx}_1_sub hidden"
           ) %>
         </td>
         <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player1_adj_score]",
-            match.score_for(match.player1).try(:adj_value), class: 'form-control'
+            match.score_for(match.player1).try(:adj_value), class: "form-control match_#{idx}_1_player"
           ) %>
           <%= text_field_tag("matches[#{idx}][sub1_adj_score]",
-            match.score_for(match.sub1).try(:adj_value), class: 'form-control'
+            match.score_for(match.sub1).try(:adj_value), class: "form-control match_#{idx}_1_sub hidden"
           ) %>
         </td>
         <td class='num-input'>
@@ -48,7 +48,7 @@
           ) %>
         </td>
         <td>
-          <%= check_box_tag("matches[#{idx}][player1_sub_used]", '1', false, class: 'sub-used') %>
+          <%= check_box_tag("matches[#{idx}][player1_sub_used]", '1', match.sub1_id.present?, class: 'sub-used', 'data-group' => "match_#{idx}_1") %>
         </td>
         <td>
           <%= select_tag("matches[#{idx}][player2_id]",
@@ -57,23 +57,23 @@
           ) %>
           <%= select_tag("matches[#{idx}][sub2_id]",
               options_from_collection_for_select(Player.where(flight: 'Substitute'), :id, :num_full_name, match.sub2_id), 
-              class: 'form-control', include_blank: 'Choose substitute'
+              class: "form-control match_#{idx}_2_sub hidden", include_blank: 'Choose substitute'
           ) %>
         </td>
         <td class='num-input'>
           <%= text_field_tag("matches[#{idx}][player2_score]",
-            match.score_for(match.player2).try(:value), class: 'form-control'
+            match.score_for(match.player2).try(:value), class: "form-control match_#{idx}_2_player"
           ) %>
           <%= text_field_tag("matches[#{idx}][sub2_score]",
-            match.score_for(match.sub2).try(:value), class: 'form-control'
+            match.score_for(match.sub2).try(:value), class: "form-control match_#{idx}_2_sub hidden"
           ) %>
         </td>
-        <td class='num-input'>
+        <td class="num-input">
           <%= text_field_tag("matches[#{idx}][player2_adj_score]",
-            match.score_for(match.player2).try(:adj_value), class: 'form-control'
+            match.score_for(match.player2).try(:adj_value), class: "form-control match_#{idx}_2_player"
           ) %>
           <%= text_field_tag("matches[#{idx}][sub2_adj_score]",
-            match.score_for(match.sub2).try(:adj_value), class: 'form-control'
+            match.score_for(match.sub2).try(:adj_value), class: "form-control match_#{idx}_2_sub hidden"
           ) %>
         </td>
         <td class='num-input'>
@@ -82,7 +82,7 @@
           ) %>
         </td>
         <td>
-          <%= check_box_tag("matches[#{idx}][player2_sub_used]", '1', false, class: 'sub-used') %>
+          <%= check_box_tag("matches[#{idx}][player2_sub_used]", '1', false, class: 'sub-used', 'data-group' => "match_#{idx}_2") %>
         </td>
       </tr>
     <% end %>

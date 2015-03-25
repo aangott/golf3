@@ -40,8 +40,8 @@ class RoundForm
       match.update_attributes(
         player1_id: attribs[:player1_id],
         player2_id: attribs[:player2_id],
-        sub1_id: attribs[:sub1_id],
-        sub2_id: attribs[:sub2_id]
+        sub1_id: (attribs[:player1_sub_used] ? attribs[:sub1_id] : nil),
+        sub2_id: (attribs[:player2_sub_used] ? attribs[:sub2_id] : nil)
       )
       assign_outcomes(match, attribs) if @round.in_past?
     end
