@@ -8,8 +8,8 @@
   <tbody>
     <% @round.matches.each do |match| %>
       <tr>
-        <td><%= display_player(match.player1)%></td>
-        <td><%= display_player(match.player2)%></td>
+        <td><%= display_player(match.player1) || 'Not yet selected' %></td>
+        <td><%= display_player(match.player2) || 'Not yet selected'%></td>
       </tr>
     <% end %>
   </tbody>
