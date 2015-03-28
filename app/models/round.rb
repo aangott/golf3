@@ -1,6 +1,6 @@
 class Round < ActiveRecord::Base
 
-  has_many :matches
+  has_many :matches, dependent: :destroy
 
   COURSES = ['Front 9', 'Back 9', 'No Golf']
 

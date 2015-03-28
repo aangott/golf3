@@ -5,8 +5,8 @@ class Match < ActiveRecord::Base
   belongs_to :sub2, class_name: "Player"
   belongs_to :round
 
-  has_many :scores
-  has_many :points
+  has_many :scores, dependent: :destroy
+  has_many :points, dependent: :destroy
 
   delegate :date, to: :round
   delegate :this_year?, to: :round

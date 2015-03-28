@@ -33,7 +33,7 @@
               <% end %>
             </td>
             <td>
-              <%= link_to '#', data: { confirm: 'Are you sure you want to permanently delete this round?' } do %>
+              <%= link_to round, method: :delete, data: { confirm: 'Are you sure you want to permanently delete this round?' } do %>
                 <i class="fa fa-times"></i>
               <% end %>
             </td>

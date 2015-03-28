@@ -43,4 +43,11 @@ class RoundsController < ApplicationController
     @round = Round.find(params[:id])
   end
 
+  def destroy
+    @round = Round.find(params[:id])
+    @round.destroy
+    flash[:success] = 'Round successfully deleted.'
+    redirect_to rounds_path
+  end
+
 end
