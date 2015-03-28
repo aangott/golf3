@@ -15,3 +15,5 @@
 //= require jquery.sticky.js
 //= require twitter/bootstrap
 //= require_tree .
+
+window.Golf = {};
