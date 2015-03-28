@@ -14,5 +14,4 @@
 //= require jquery_ujs
 //= require jquery.sticky.js
 //= require twitter/bootstrap
-//= require turbolinks
 //= require_tree .
