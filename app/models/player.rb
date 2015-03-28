@@ -26,7 +26,8 @@ class Player < ActiveRecord::Base
   end
 
   def last_scores
-    scores_from_matches, old_scores = scores.partition { |s| s.match_id.present? }
+    scores_with_values = scores.select(&:value)
+    scores_from_matches, old_scores = scores_with_values.partition { |s| s.match_id.present? }
     ordered_scores = (
       scores_from_matches.sort_by(&:date).reverse + 
       old_scores.sort_by(&:id).reverse

@@ -14,14 +14,37 @@
   <tbody>
     <% @round.matches.each do |match| %>
       <tr>
-        <td><%= display_player(match.player1)%></td>
-        <td><%= match.score_for(match.player1).value %></td>
-        <td><%= match.score_for(match.player1).adj_value %></td>
-        <td><%= match.points_for(match.player1).value %></td>
-        <td><%= display_player(match.player2)%></td>
-        <td><%= match.score_for(match.player2).value %></td>
-        <td><%= match.score_for(match.player2).adj_value %></td>
-        <td><%= match.points_for(match.player2).value %></td>
+        <td>
+          <%= display_player(match.player1) %><br/>
+          <%= display_player(match.sub1) %>
+        </td>
+        <td>
+          <%= match.score_for(match.player1).try(:value) %><br/>
+          <%= match.score_for(match.sub1).try(:value) %>
+        </td>
+        <td>
+          <%= match.score_for(match.player1).try(:adj_value) %><br/>
+          <%= match.score_for(match.sub1).try(:adj_value) %>
+        </td>
+        <td>
+          <%= match.points_for(match.player1).try(:value) %>
+        </td>
+        
+        <td>
+          <%= display_player(match.player2)%> <br/>
+          <%= display_player(match.sub2)%>
+        </td>
+        <td>
+          <%= match.score_for(match.player2).try(:value) %><br/>
+          <%= match.score_for(match.sub2).try(:value) %>
+        </td>
+        <td>
+          <%= match.score_for(match.player2).try(:adj_value) %><br/>
+          <%= match.score_for(match.sub2).try(:adj_value) %>
+        </td>
+        <td>
+          <%= match.points_for(match.player2).try(:value) %>
+        </td>
       </tr>
     <% end %>
   </tbody>

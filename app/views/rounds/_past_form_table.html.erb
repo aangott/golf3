@@ -82,7 +82,7 @@
           ) %>
         </td>
         <td>
-          <%= check_box_tag("matches[#{idx}][player2_sub_used]", '1', false, class: 'sub-used', 'data-group' => "match_#{idx}_2") %>
+          <%= check_box_tag("matches[#{idx}][player2_sub_used]", '1', match.sub2_id.present?, class: 'sub-used', 'data-group' => "match_#{idx}_2") %>
         </td>
       </tr>
     <% end %>
