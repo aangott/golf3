@@ -25,6 +25,11 @@ class Player < ActiveRecord::Base
     "#{number} - #{short_name}"
   end
 
+  def num_short_name_avg
+    "#{number} - #{short_name} (#{average_score})"
+  end
+
+
   def last_scores
     scores_with_values = scores.select(&:value)
     scores_from_matches, old_scores = scores_with_values.partition { |s| s.match_id.present? }

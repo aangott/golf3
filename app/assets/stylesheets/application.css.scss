@@ -48,6 +48,7 @@ a {
 
 .navmenu,
 .container.main {
+  min-width: 800px;
   border: 1px solid $light-yellow;
   margin-left: 10%;
   width: 85%;
@@ -140,3 +141,25 @@ a {
 table {
   margin: 20px 0; 
 }
+
+@media print {
+  .application {
+    margin-top: 0;
+  }
+  .navmenu {
+    display: none;
+  }
+  .container.main {
+    margin: 0;
+    padding: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
