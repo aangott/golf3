@@ -10,10 +10,12 @@ class StatsController < ApplicationController
 
   def rankings
     @last_scored_round = Round.last_scored
+    players_by_points = Player.core.includes(:scores).includes(:points)
+    sorted_players = players_by_points.sort_by(&:total_points).reverse
     @categorized_players = {
-      'First Flight' =>  Player.where(flight: 'First').includes(:scores).includes(:points).sort_by(&:total_points),
-      'Second Flight' => Player.where(flight: 'Second').includes(:scores).includes(:points).sort_by(&:total_points),
-      'Substitutes' => Player.where(flight: 'Substitute').includes(:scores).includes(:points).sort_by(&:last_name)
+      'First Flight' =>  sorted_players.select { |p| p.flight == 'First' },
+      'Second Flight' => sorted_players.select { |p| p.flight == 'Second' },
+      'Substitutes' => Player.where(flight: 'Substitute').includes(:scores).sort_by(&:last_name)
     }
   end
 
