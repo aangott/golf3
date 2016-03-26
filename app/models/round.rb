@@ -13,7 +13,7 @@ class Round < ActiveRecord::Base
   end
 
   def self.matches_per_round 
-    (Player.core.count / 2.0).round
+    (Player.count / 2.0).round
   end
 
   def scored?
@@ -27,5 +27,4 @@ class Round < ActiveRecord::Base
   def this_year?
     date.year == Time.now.year
   end
-
 end
