@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325222703) do
+ActiveRecord::Schema.define(version: 20160413214514) do
 
   create_table "matches", force: :cascade do |t|
     t.integer "round_id"
